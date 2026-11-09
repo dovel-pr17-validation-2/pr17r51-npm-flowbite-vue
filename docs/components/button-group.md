@@ -1,0 +1,112 @@
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+import FwbButtonGroupExample from './buttonGroup/examples/FwbButtonGroupExample.vue'
+import FwbButtonGroupExampleIcon from './buttonGroup/examples/FwbButtonGroupExampleIcon.vue'
+
+const FwbButtonGroupExampleDropdown = defineClientComponent(() => {
+  return import('./buttonGroup/examples/FwbButtonGroupExampleDropdown.vue')
+})
+</script>
+
+# Button Group - Flowbite Vue
+
+#### Button groups are a Tailwind CSS powered set of buttons sticked together in a horizontal line
+
+---
+
+:::tip Button Group - Flowbite
+Original reference: [https://flowbite.com/docs/components/button-group/](https://flowbite.com/docs/components/button-group/)
+:::
+
+The button group component can be used to stack multiple `FwbButton` elements and dropdowns together in a single inline group. Border-radius adjustments are handled automatically — the first child gets a left-rounded corner, the last gets a right-rounded corner, and everything in between is square.
+
+## Default Button Group
+
+Wrap any number of `FwbButton` components inside `FwbButtonGroup` to join them into a single horizontal unit. Each button retains its own `color` and other props.
+
+<fwb-button-group-example />
+
+```vue
+<template>
+  <fwb-button-group>
+    <fwb-button>Button Default</fwb-button>
+    <fwb-button color="purple">Button Purple</fwb-button>
+    <fwb-button color="alternative">Button Alternative</fwb-button>
+    <fwb-button color="red">Button Red</fwb-button>
+  </fwb-button-group>
+</template>
+
+<script setup>
+import { FwbButtonGroup, FwbButton } from 'flowbite-vue'
+</script>
+```
+
+## Buttons with Icons
+
+Use `FwbButton`'s `#suffix` or `#prefix` slots to add icons to individual buttons within the group. This is useful for toolbar-style controls where text and icon cues appear together.
+
+<fwb-button-group-example-icon />
+
+```vue
+<template>
+  <fwb-button-group>
+    <fwb-button outline>Button 1</fwb-button>
+    <fwb-button outline>Button 2</fwb-button>
+    <fwb-button outline>Button 3</fwb-button>
+    <fwb-button outline>
+      Button 4
+      <template #suffix>
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path clip-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" fill-rule="evenodd" />
+        </svg>
+      </template>
+    </fwb-button>
+  </fwb-button-group>
+</template>
+
+<script setup>
+import { FwbButtonGroup, FwbButton } from 'flowbite-vue'
+</script>
+```
+
+## Grouping Buttons and Dropdowns
+
+Mix `FwbButton` and `FwbDropdown` components inside `FwbButtonGroup` to combine actions with contextual menus in a single control.
+
+<fwb-button-group-example-dropdown />
+
+```vue
+<template>
+  <fwb-button-group>
+    <fwb-button>Button 1</fwb-button>
+    <fwb-button>Button 2</fwb-button>
+    <fwb-dropdown text="Dropdown">
+      <p class="p-2">
+        This is a test dropdown
+      </p>
+    </fwb-dropdown>
+    <fwb-dropdown text="Dropdown with list">
+      <fwb-list-group>
+        <fwb-list-group-item href="#"> These </fwb-list-group-item>
+        <fwb-list-group-item href="#"> are </fwb-list-group-item>
+        <fwb-list-group-item href="#"> some </fwb-list-group-item>
+        <fwb-list-group-item href="#"> list </fwb-list-group-item>
+        <fwb-list-group-item href="#"> items </fwb-list-group-item>
+      </fwb-list-group>
+    </fwb-dropdown>
+  </fwb-button-group>
+</template>
+
+<script setup>
+import { FwbButtonGroup, FwbButton, FwbDropdown, FwbListGroupItem, FwbListGroup } from 'flowbite-vue'
+</script>
+```
+
+## Button Group component API
+
+### FwbButtonGroup Slots
+
+| Name    | Description                                                                      |
+| ------- | -------------------------------------------------------------------------------- |
+| default | One or more `FwbButton` or `FwbDropdown` elements to render as a joined group.   |
