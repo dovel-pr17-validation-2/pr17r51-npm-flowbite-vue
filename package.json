@@ -93,7 +93,7 @@
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "@nuxt/kit": "4.6.4",
-    "@nuxt/test-utils": "4.3.4",
+    "@nuxt/test-utils": "4.4.0",
     "@stylistic/eslint-plugin": "5.10.0",
     "@tailwindcss/postcss": "4.3.4",
     "@tailwindcss/vite": "4.3.4",
